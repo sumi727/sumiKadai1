@@ -28,14 +28,15 @@ class ViewController: UIViewController {
         textField4.keyboardType = .numberPad
         textField5.keyboardType = .numberPad
 
-        calculateButton.addAction(UIAction(handler: { [self] _ in
+        func didTapButton(action: UIAction) {
             let result: Int = check(textField: textField1) + check(textField: textField2) + check(textField: textField3) + check(textField: textField4) + check(textField: textField5)
             resultLabel.text = "\(result)"
-        }), for: .touchUpInside)
+        }
 
+        calculateButton.addAction(UIAction(handler: didTapButton), for: .touchUpInside)
     }
-    func check(textField: UITextField) -> Int{
+
+    func check(textField: UITextField) -> Int {
         return Int(textField.text!) ?? 0
     }
 }
-
